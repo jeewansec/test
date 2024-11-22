@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jiban</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .jiban-rain {
+            position: absolute;
+            top: -50px;
+            font-size: 24px;
+            white-space: nowrap;
+            animation: rain 5s linear infinite;
+        }
+        @keyframes rain {
+            0% {
+                top: -50px;
+            }
+            100% {
+                top: 100vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        const rainContainer = document.body;
+        const text = "Jiban is Don";
+        
+        function createRain() {
+            const rainElement = document.createElement('div');
+            rainElement.classList.add('jiban-rain');
+            rainElement.style.left = Math.random() * window.innerWidth + 'px';
+            rainElement.textContent = text;
+            rainElement.style.animationDuration = Math.random() * 3 + 2 + 's';
+            rainContainer.appendChild(rainElement);
+
+            setTimeout(() => {
+                rainContainer.removeChild(rainElement);
+            }, 5000); // Match the duration of the animation
+        }
+
+        setInterval(createRain, 300); // Create a new element every 300ms
+    </script>
+</body>
+</html>
